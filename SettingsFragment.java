@@ -30,7 +30,8 @@ public class SettingsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState) 
+    {
 
         View v = inflater.inflate(R.layout.fragment_settings, container, false);
 
@@ -45,7 +46,6 @@ public class SettingsFragment extends Fragment {
         prefs = getActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
         editor = prefs.edit();
 
-        // Load saved preferences
         etName.setText(prefs.getString("username", ""));
         etEmail.setText(prefs.getString("email", ""));
         etPassword.setText(prefs.getString("password", ""));
@@ -62,12 +62,13 @@ public class SettingsFragment extends Fragment {
             String email = etEmail.getText().toString();
             String password = etPassword.getText().toString();
 
-            if (TextUtils.isEmpty(name) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
+            if (TextUtils.isEmpty(name) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) 
+            {
                 Toast.makeText(getActivity(), "Please fill all fields", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            // Save all preferences
+
             editor.putString("username", name);
             editor.putString("email", email);
             editor.putString("password", password);
@@ -97,21 +98,23 @@ public class SettingsFragment extends Fragment {
         return v;
     }
 
-    private void applyTheme(String theme, View root) {
+    private void applyTheme(String theme, View root) 
+    {
         if (root == null) return;
 
-        switch (theme) {
+        switch (theme)
+            {
             case "Light":
                 root.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 break;
             case "Dark":
-                root.setBackgroundColor(Color.parseColor("#696969")); // Dim gray
+                root.setBackgroundColor(Color.parseColor("#696969")); 
                 break;
             case "Blue":
-                root.setBackgroundColor(Color.parseColor("#ADD8E6")); // Light blue
+                root.setBackgroundColor(Color.parseColor("#ADD8E6")); 
                 break;
             case "Green":
-                root.setBackgroundColor(Color.parseColor("#90EE90")); // Light green
+                root.setBackgroundColor(Color.parseColor("#90EE90")); 
                 break;
         }
     }
