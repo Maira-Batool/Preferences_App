@@ -12,7 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends Fragment 
+{
 
     TextView tvName, tvEmail, tvPassword, tvTheme, tvNotifications;
     SharedPreferences prefs;
@@ -22,7 +23,8 @@ public class ProfileFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState) 
+    {
 
         rootView = inflater.inflate(R.layout.fragment_profile, container, false);
 
@@ -42,7 +44,8 @@ public class ProfileFragment extends Fragment {
         return rootView;
     }
 
-    private void updateProfile() {
+    private void updateProfile() 
+    {
         tvName.setText("Name: " + prefs.getString("username", "No Name Saved"));
         tvEmail.setText("Email: " + prefs.getString("email", "No Email Saved"));
         tvPassword.setText("Password: " + prefs.getString("password", "No Password Saved"));
@@ -50,8 +53,8 @@ public class ProfileFragment extends Fragment {
         tvTheme.setText("Theme: " + theme);
         tvNotifications.setText("Notifications: " + (prefs.getBoolean("notifications", false) ? "Enabled" : "Disabled"));
 
-        // Apply theme background
-        switch (theme) {
+        switch (theme) 
+        {
             case "Light":
                 rootView.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 break;
@@ -68,7 +71,8 @@ public class ProfileFragment extends Fragment {
     }
 
     @Override
-    public void onDestroyView() {
+    public void onDestroyView() 
+    {
         super.onDestroyView();
         prefs.unregisterOnSharedPreferenceChangeListener(listener);
     }
